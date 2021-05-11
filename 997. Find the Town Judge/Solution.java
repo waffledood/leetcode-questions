@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 class Solution {
-    public int findJudge(int N, int[][] trust) {
+    public int findJudge1(int N, int[][] trust) {
         
         // Hash Map to store <person A, number of people trusted by A>
         HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>();
@@ -39,4 +39,17 @@ class Solution {
         // if HashMap does not contain a value of n-1, return -1 
         return -1;
     }
+
+    public int findJudge2(int N, int[][] trust) {
+        int[] count = new int[N+1];
+        for (int[] t: trust) {
+            count[t[0]]--;
+            count[t[1]]++;
+        }
+        for (int i = 1; i <= N; ++i) {
+            if (count[i] == N - 1) return i;
+        }
+        return -1;
+    }
+
 }
