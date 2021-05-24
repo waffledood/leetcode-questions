@@ -18,6 +18,7 @@ class Solution {
         
         // remove edges if it's being pointed to by another vertex 
         for (List<Integer> edge: edges) {
+            // note that the remove method is actually O(N) instead of O(1)
             list.remove(edge.get(1));
         }
         
